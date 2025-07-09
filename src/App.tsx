@@ -1,5 +1,6 @@
 "use client"
 
+import type React from "react"
 import { useState, useEffect } from "react"
 import { Download, FolderOpen, Menu, X } from "lucide-react"
 import "./App.css"
