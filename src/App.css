@@ -1471,19 +1471,25 @@ body {
     gap: 2rem;
   }
 
+  .about-image {
+        align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
   .about-image img {
     max-width: 250px;
     height: 250px;
-    align-items: center;
-    justify-content: center;
   }
 
   .about-text h3 {
     font-size: 1.4rem;
+    text-align: center;
   }
 
   .about-text p {
     font-size: 0.9rem;
+    text-align: center;
   }
 
   .education h4 {
