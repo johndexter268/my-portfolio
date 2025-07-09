@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import emailjs from "emailjs-com";
 import { Download, FolderOpen, Menu, X, Github, Linkedin, Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react"
 import {
   FaHtml5,
@@ -28,6 +29,7 @@ import {
   SiAdobephotoshop,
   SiAffinitydesigner,
 } from "react-icons/si"
+import { IoLogoElectron, IoLogoFirebase  } from "react-icons/io5";
 import { VscVscode } from "react-icons/vsc"
 import ChatWidget from "./components/ChatWidget"
 import "./App.css"
@@ -66,11 +68,13 @@ function App() {
     { name: "express", label: "Express", icon: SiExpress, color: "#ffffff", category: "Backend" },
     { name: "php", label: "PHP", icon: FaPhp, color: "#777BB4", category: "Backend" },
     { name: "laravel", label: "Laravel", icon: FaLaravel, color: "#FF2D20", category: "Backend" },
+    { name: "electron", label: "Electron", icon: IoLogoElectron, color: "#9beafa", category: "Backend" },
 
     // Database
     { name: "mysql", label: "MySQL", icon: SiMysql, color: "#4479A1", category: "Database" },
     { name: "postgresql", label: "PostgreSQL", icon: SiPostgresql, color: "#336791", category: "Database" },
     { name: "mongodb", label: "MongoDB", icon: SiMongodb, color: "#47A248", category: "Database" },
+    { name: "firebase", label: "Firebase", icon: IoLogoFirebase , color: "#fbc304", category: "Database" },
 
     // Tools
     { name: "git", label: "Git", icon: FaGitAlt, color: "#F05032", category: "Tools" },
@@ -158,16 +162,48 @@ function App() {
     }))
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    setFormData({ email: "", subject: "", message: "" })
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    // This is currently just a demo - see instructions below for real implementation
-    alert(
-      "Demo: Message would be sent! Check console for form data. To make this work, you need to integrate with a backend service or email service like EmailJS.",
+  // Add loading state
+  const submitButton = e.target.querySelector('button[type="submit"]');
+  const originalText = submitButton.innerHTML;
+  submitButton.innerHTML = '<span>Sending...</span>';
+  submitButton.disabled = true;
+
+  // Initialize EmailJS if not already done
+  emailjs.init("u92n-2F1k5f75Lv57"); // Your public key
+
+  emailjs
+    .send(
+      "service_g8wn8wm",      // Your service ID
+      "template_86hu32c",     // Your template ID
+      {
+        // Make sure these match your EmailJS template variables
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: "John Dexter Lanot", // Your name
+      },
+      "u92n-2F1k5f75Lv57"          // Your public key
     )
-  }
+    .then(
+      (result) => {
+        console.log("Success:", result);
+        alert("Message sent successfully!");
+        setFormData({ email: "", subject: "", message: "" });
+      },
+      (error) => {
+        console.error("EmailJS Error:", error);
+        alert(`Failed to send message: ${error.text || error.message}`);
+      }
+    )
+    .finally(() => {
+      // Reset button state
+      submitButton.innerHTML = originalText;
+      submitButton.disabled = false;
+    });
+};
 
   return (
     <div className="App">
@@ -177,7 +213,7 @@ function App() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
-          <img src="/logo.png" alt="Logo" />
+          <a href="/"><img src="/about.png" alt="Logo" /></a>
         </div>
         <div className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <a href="#projects" onClick={closeMenu}>
@@ -233,20 +269,18 @@ function App() {
             {/* Project Card 1 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="E-commerce Website" />
+                <img src="/projects/ptroro.jpg?height=200&width=350" alt="project" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">E-commerce Website</h3>
+                <h3 className="project-title">PT RORO Inventory System</h3>
                 <p className="project-description">
-                  A full-stack e-commerce platform with user authentication, shopping cart functionality, payment
-                  integration, and admin dashboard. Built with modern web technologies for optimal performance and user
-                  experience.
+                  A desktop application built with Electron, Express, and SQLite designed to efficiently manage and track office supplies, utilities, and union materials. It provides a streamlined solution for monitoring inventory levels, ensuring accurate stock management, and supporting operational needs.
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">React</span>
-                  <span className="tech-badge">Node.js</span>
-                  <span className="tech-badge">MongoDB</span>
-                  <span className="tech-badge">Stripe</span>
+                  <span className="tech-badge">Electron</span>
+                  <span className="tech-badge">Javascript</span>
+                  <span className="tech-badge">Express</span>
+                  <span className="tech-badge">SQLite</span>
                 </div>
               </div>
             </div>
@@ -254,19 +288,17 @@ function App() {
             {/* Project Card 2 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="Task Management App" />
+                <img src="/projects/AIchatbot.png?height=200&width=350" alt="project" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">Task Management App</h3>
+                <h3 className="project-title">BatStateU AI Chatbot</h3>
                 <p className="project-description">
-                  A collaborative task management application with real-time updates, drag-and-drop functionality, team
-                  collaboration features, and progress tracking. Designed for productivity and team efficiency.
+                  An intelligent conversational assistant developed using JavaScript, Python, Laravel, and WebSocket. It provides real-time responses to user queries, offering seamless communication and support for students and stakeholders of Batangas State University.
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">Vue.js</span>
-                  <span className="tech-badge">Firebase</span>
-                  <span className="tech-badge">Socket.io</span>
-                  <span className="tech-badge">CSS3</span>
+                  <span className="tech-badge">Python</span>
+                  <span className="tech-badge">Javascript</span>
+                  <span className="tech-badge">CSS</span>
                 </div>
               </div>
             </div>
@@ -274,19 +306,18 @@ function App() {
             {/* Project Card 3 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="Weather Dashboard" />
+                <img src="/projects/AI-admin.png?height=200&width=350" alt="project" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">Weather Dashboard</h3>
+                <h3 className="project-title">AI Chatbot Admin Dashboard</h3>
                 <p className="project-description">
-                  An interactive weather dashboard with location-based forecasts, historical data visualization, weather
-                  alerts, and customizable widgets. Features beautiful animations and responsive design for all devices.
+                  A management system built to oversee the chatbot system, allowing administrators to manage API tokens, user permissions, and user accounts.
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">JavaScript</span>
-                  <span className="tech-badge">Chart.js</span>
-                  <span className="tech-badge">API</span>
-                  <span className="tech-badge">SCSS</span>
+                  <span className="tech-badge">Laravel</span>
+                  <span className="tech-badge">Tailwind</span>
+                  <span className="tech-badge">PHP</span>
+                  <span className="tech-badge">PostgreSQL</span>
                 </div>
               </div>
             </div>
@@ -294,20 +325,18 @@ function App() {
             {/* Project Card 4 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="Portfolio Website" />
+                <img src="/projects/ojt-tracker.png?height=200&width=350" alt="project" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">Portfolio Website</h3>
+                <h3 className="project-title">OJT Tracking System</h3>
                 <p className="project-description">
-                  A modern, responsive portfolio website showcasing creative projects and professional experience.
-                  Features smooth animations, dark mode toggle, contact forms, and optimized performance for excellent
-                  user experience.
+                  System for monitoring on-the-job training progress, remaining days, and trainee performance. It also features task management, attendance tracking, and records of holidays and absences.
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">React</span>
-                  <span className="tech-badge">Tailwind</span>
-                  <span className="tech-badge">Framer Motion</span>
-                  <span className="tech-badge">Vercel</span>
+                  <span className="tech-badge">HTML</span>
+                  <span className="tech-badge">CSS</span>
+                  <span className="tech-badge">Javascript</span>
+                  <span className="tech-badge">Firebase</span>
                 </div>
               </div>
             </div>
@@ -315,19 +344,17 @@ function App() {
             {/* Project Card 5 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="Social Media App" />
+                <img src="/projects/DE-App.png?height=200&width=350" alt="projects" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">Social Media App</h3>
+                <h3 className="project-title">Dental Ease App</h3>
                 <p className="project-description">
-                  A full-featured social media application with user profiles, post sharing, real-time messaging, story
-                  features, and advanced privacy controls. Built with scalability and security in mind.
+                  A mobile application developed with Flutter and Firebase, designed to enhance patient engagement by enabling appointment booking, and easy access to dental records and submitting feedback.
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">React Native</span>
-                  <span className="tech-badge">Express</span>
-                  <span className="tech-badge">PostgreSQL</span>
-                  <span className="tech-badge">AWS</span>
+                  <span className="tech-badge">Flutter</span>
+                  <span className="tech-badge">Dart</span>
+                  <span className="tech-badge">Firebase</span>
                 </div>
               </div>
             </div>
@@ -335,19 +362,17 @@ function App() {
             {/* Project Card 6 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="Learning Platform" />
+                <img src="/projects/DE-Dentist.png?height=200&width=350" alt="projects" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">Learning Platform</h3>
+                <h3 className="project-title">Dental Ease Dentist Web System</h3>
                 <p className="project-description">
-                  An online learning management system with course creation tools, progress tracking, interactive
-                  quizzes, video streaming, and certification system. Designed for educators and students worldwide.
+                  A real-time web dashboard for dentists, allowing seamless management of appointments, patients, inventory and messaging.
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">Next.js</span>
-                  <span className="tech-badge">Prisma</span>
-                  <span className="tech-badge">MySQL</span>
-                  <span className="tech-badge">Cloudinary</span>
+                  <span className="tech-badge">Flutter</span>
+                  <span className="tech-badge">Dart</span>
+                  <span className="tech-badge">Firebase</span>
                 </div>
               </div>
             </div>
@@ -355,19 +380,18 @@ function App() {
             {/* Project Card 7 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="Fitness Tracker" />
+                <img src="/projects/lumiere.png?height=200&width=350" alt="projects" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">Fitness Tracker</h3>
+                <h3 className="project-title">Lumiere Clothing Online Shop</h3>
                 <p className="project-description">
-                  A comprehensive fitness tracking application with workout planning, nutrition logging, progress
-                  analytics, and social features. Integrates with wearable devices for accurate health monitoring.
+                  An e-commerce platform with integrated admin management, allowing customers to browse and order clothing online while enabling administrators to manage products, inventory, and order processing.
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">Flutter</span>
-                  <span className="tech-badge">Dart</span>
-                  <span className="tech-badge">Firebase</span>
-                  <span className="tech-badge">Health API</span>
+                  <span className="tech-badge">HTMl</span>
+                  <span className="tech-badge">CSSS</span>
+                  <span className="tech-badge">PHP</span>
+                  <span className="tech-badge">MySQL</span>
                 </div>
               </div>
             </div>
@@ -375,19 +399,16 @@ function App() {
             {/* Project Card 8 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/placeholder.svg?height=200&width=350" alt="Crypto Dashboard" />
+                <img src="/projects/portfolio.png?height=200&width=350" alt="Crypto Dashboard" />
               </div>
               <div className="project-content">
-                <h3 className="project-title">Crypto Dashboard</h3>
+                <h3 className="project-title">Personal Portfolio</h3>
                 <p className="project-description">
-                  A real-time cryptocurrency tracking dashboard with portfolio management, price alerts, market analysis
-                  tools, and trading insights. Features beautiful charts and comprehensive market data.
+                  A portfolio website that showcase my projects and skills. 
                 </p>
                 <div className="tech-stack">
-                  <span className="tech-badge">TypeScript</span>
-                  <span className="tech-badge">D3.js</span>
-                  <span className="tech-badge">WebSocket</span>
-                  <span className="tech-badge">Redis</span>
+                  <span className="tech-badge">React</span>
+                  <span className="tech-badge">CSS</span>
                 </div>
               </div>
             </div>
@@ -451,7 +472,7 @@ function App() {
               <img src="/about.png?height=400&width=400" alt="About Me" />
             </div>
             <div className="about-text">
-              <h3>Passionate Developer & Creative Designer</h3>
+              {/* <h3>Passionate Developer & Creative Designer</h3> */}
               <p>
                 Hello! I'm John Dexter Lanot, a passionate web developer and graphic designer with experience in
                 creating digital experiences that make a difference. I specialize in building modern, responsive
@@ -574,7 +595,7 @@ function App() {
           <div className="footer-content">
             <div className="footer-left">
               <div className="footer-logo">
-                <img src="/logo.png" alt="Logo" />
+                <img src="/about.png" alt="Logo" />
                 <span>John Dexter Lanot</span>
               </div>
               <p>Building digital experiences that make a difference.</p>

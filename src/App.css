@@ -2,11 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
+  font-family: "Red Hat Mono", monospace;
 }
 
 body {
@@ -91,10 +94,11 @@ body {
 }
 
 .background-text {
+  font-family: "Pixelify Sans", sans-serif;
   position: fixed;
   font-size: 80vw;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.05);
+  color: rgba(58, 60, 61, 0.08);
   white-space: nowrap;
   z-index: -1;
   top: 50%;
@@ -103,13 +107,35 @@ body {
 }
 
 .hero-content {
+  position: relative; /* Needed for the pseudo-element */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 90%;
-  max-width: 1200px;
+  max-width: 850px;
+  padding: 40px 0;
   gap: 2rem;
+  background-color: rgba(58, 58, 58, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+/* The "hole" at the top center */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: 15px; /* Slightly above the top border */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 15px;
+  background-color: rgb(0, 0, 0); /* Match the background or use transparent for full hole */
+  border-radius: 30%;
+  /* border: #80adff solid 1px; */
+  z-index: 2;
+}
+
 
 .hero-image img {
   width: 300px;
@@ -250,6 +276,8 @@ body {
   height: 200px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 0.4rem;
+  border-radius: 5px;
 }
 
 .project-image img {
@@ -280,7 +308,7 @@ body {
   line-height: 1.6;
   margin-bottom: 1rem;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -304,14 +332,9 @@ body {
   transition: all 0.2s ease;
 }
 
-.tech-badge:hover {
-  background: rgba(153, 130, 72, 0.3);
-  transform: translateY(-1px);
-}
-
 /* Tech Stack Section - Plain Grid */
 .tech-stack {
-  padding: 100px 0;
+  padding: 10px 0;
   background: #000;
   position: relative;
   z-index: 2;
@@ -321,7 +344,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 2rem;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -375,7 +398,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.8);
   padding: 0.75rem 1.5rem;
-  border-radius: 25px;
+  border-radius: 5px;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
@@ -384,12 +407,12 @@ body {
   white-space: nowrap;
 }
 
-.filter-btn:hover {
+/* .filter-btn:hover {
   background: rgba(0, 89, 255, 0.1);
   border-color: rgba(0, 89, 255, 0.3);
   color: #8fb6ff;
   transform: translateY(-2px);
-}
+} */
 
 .filter-btn.active {
   background: linear-gradient(135deg, #0059ff 0%, #8fb6ff 100%);
@@ -398,10 +421,10 @@ body {
   font-weight: 600;
 }
 
-.filter-btn.active:hover {
+/* .filter-btn.active:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 89, 255, 0.4);
-}
+} */
 
 /* Education Section */
 .education {
@@ -555,7 +578,7 @@ body {
 
 .contact-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   gap: 4rem;
 }
 
@@ -601,8 +624,8 @@ body {
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* background: rgba(26, 26, 26, 0.8); */
+  /* border: 1px solid rgba(255, 255, 255, 0.1); */
   border-radius: 12px;
   color: #fff;
   text-decoration: none;
@@ -610,10 +633,10 @@ body {
 }
 
 .social-link:hover {
-  background: rgba(193, 232, 255, 0.2);
-  border-color: #0059ff;
+  /* background: rgba(193, 232, 255, 0.2); */
+  /* border-color: #0059ff; */
   color: #8fb6ff;
-  transform: translateY(-3px);
+  /* transform: translateY(-3px); */
 }
 
 /* Contact Form */
@@ -982,7 +1005,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(219, 166, 34, 0.3);
+  box-shadow: 0 4px 20px rgba(39, 39, 39, 0.3);
   transition: all 0.3s ease;
 }
 
@@ -1193,7 +1216,7 @@ body {
 
   /* Footer Mobile */
   .footer-links {
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
     gap: 1.5rem;
   }
 
@@ -1513,6 +1536,7 @@ body {
 
   /* Contact Extra Small */
   .contact-content {
+    grid-template-columns: none;
     gap: 2rem;
   }
 
@@ -1547,8 +1571,18 @@ body {
     padding: 2rem 0 1rem;
   }
 
+  .footer-content {
+  grid-template-columns: none;
+  }
+
   .footer-logo span {
     font-size: 1.1rem;
+  }
+
+  .footer-logo {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .footer-section h4 {
