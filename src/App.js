@@ -474,6 +474,7 @@ function App() {
                     <h5>Bachelor of Science in Information Technology</h5>
                     <p className="specialization">Specialized in Service Management</p>
                     <p className="honor">Cum Laude</p>
+                    <p className="dl">Dean's Lister 2023-2025</p>
                   </div>
                 </div>
               </div>

@@ -467,6 +467,14 @@ body {
   color: #0059ff;
   font-weight: 600;
   font-style: italic;
+  margin-bottom: 0.18rem;
+}
+
+.education-details .dl {
+  font-size: 0.9rem;
+  color: #b6b6b6;
+  font-weight: 600;
+  font-style: italic;
 }
 
 /* About Section */
