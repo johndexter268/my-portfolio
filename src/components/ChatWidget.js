@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Send, X, Bot, User } from "lucide-react"
+import Markdown from 'react-markdown'
 
 const ChatWidget = ({ closeChat }) => {
   const [messages, setMessages] = useState([
@@ -53,16 +54,58 @@ const ChatWidget = ({ closeChat }) => {
   const generateResponse = (message) => {
     const lowerMessage = message.toLowerCase();
 
-    if (lowerMessage.includes("skill") || lowerMessage.includes("technology")) {
-      return "Dex is skilled in HTML, CSS, JavaScript, PHP, Laravel, PostgreSQL, MySQL, Tailwind CSS, Bootstrap, WebSockets, and Python. He also excels in UI/UX design using tools like Adobe Photoshop, Figma, and Canva. He's passionate about building responsive, user-centric web apps and designing visually engaging digital interfaces.";
-    } else if (lowerMessage.includes("experience")) {
-      return "Dex has gained experience as a Web Developer and Intern at BatStateU ICT Central. He has built real-time web applications, AI-powered chatbots, and inventory systems. His hands-on experience spans from frontend to backend development, freelancing, and graphic design since 2019.";
-    } else if (lowerMessage.includes("project")) {
-      return "Dex has worked on diverse projects including the BatStateU AI Chatbot, Dental Ease Mobile & Web System, PT RORO Inventory System, E-commerce platforms, and the Wagayway Equality website. These projects showcase his skills in Laravel, WebSockets, Electron.js, Firebase, and more.";
-    } else if (lowerMessage.includes("contact") || lowerMessage.includes("hire")) {
-      return "You can reach Dex via email at jdlanot.2003@gmail.com or through phone at 09954894362. He's open to exciting opportunities, collaborative projects, or freelance gigs!";
+    if (
+      lowerMessage.includes("skill") ||
+      lowerMessage.includes("technology") ||
+      lowerMessage.includes("tech stack") ||
+      lowerMessage.includes("tools") ||
+      lowerMessage.includes("framework")
+    ) {
+      return `Dex is skilled in modern web and app development technologies including HTML5, CSS3, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, Express, PHP, Laravel, Electron, Firebase, MySQL, PostgreSQL, and MongoDB. He’s also experienced with tools like Git, GitHub, Postman, VS Code, and Vite. On the creative side, he works with Figma, Canva, Photoshop, and Affinity Designer for UI/UX and graphic design.`;
+    } else if (
+      lowerMessage.includes("experience") ||
+      lowerMessage.includes("background") ||
+      lowerMessage.includes("career") ||
+      lowerMessage.includes("ojt") ||
+      lowerMessage.includes("intern")
+    ) {
+      return `Dex has hands-on experience as a Web Developer and Intern at BatStateU ICT Central. He has worked on real-world systems involving admin dashboards, AI-powered bots, real-time communication tools, and OJT tracking systems. With freelance experience since 2019, he blends technical expertise with creative design.`;
+    } else if (
+      lowerMessage.includes("project") ||
+      lowerMessage.includes("portfolio") ||
+      lowerMessage.includes("work") ||
+      lowerMessage.includes("built")
+    ) {
+      return `Dex has built several notable projects:
+- **PT RORO Inventory System**: A desktop app for inventory using Electron, Express, and SQLite.
+- **BatStateU AI Chatbot & Admin Dashboard**: A smart assistant with real-time chat and admin panel using Laravel, WebSocket, and Python.
+- **Dental Ease App & Dentist Web System**: A cross-platform appointment system using Flutter and Firebase.
+- **OJT Tracking System**: Tracks trainee progress and attendance.
+- **Lumiere Clothing Shop**: An e-commerce platform with admin tools.
+- **Crypto Dashboard & Portfolio Website**: Built with React and CSS to showcase projects and personal branding.`;
+    } else if (
+      lowerMessage.includes("contact") ||
+      lowerMessage.includes("hire") ||
+      lowerMessage.includes("connect") ||
+      lowerMessage.includes("email") ||
+      lowerMessage.includes("reach")
+    ) {
+      return `You can contact Dex via email at **jdlanot.2003@gmail.com** or through phone at **0995 489 4362**. He’s open to freelance work, collaborations, and exciting opportunities!`;
+    } else if (
+      lowerMessage.includes("about") ||
+      lowerMessage.includes("yourself") ||
+      lowerMessage.includes("who are you")
+    ) {
+      return `Dex is a passionate web developer and graphic designer. I specialize in crafting modern, responsive websites and applications. Outside of tech, I love exploring design trends, contributing to open-source, and sharing knowledge. I'm always open to learning and collaborating!`;
+    } else if (
+      lowerMessage.includes("education") ||
+      lowerMessage.includes("school") ||
+      lowerMessage.includes("study") ||
+      lowerMessage.includes("degree")
+    ) {
+      return `Dex graduated with a **Bachelor of Science in Information Technology**, specializing in Service Management at Batangas State University. He earned the **Cum Laude** distinction and was a **Dean’s Lister (2023–2025)**.`;
     } else {
-      return "Thanks for your question! I can help you learn more about Dex's skills, experience, projects, or how to contact him. What would you like to know?";
+      return `Thanks for your question! I can help you learn more about Dex’s skills, experience, projects, education, or how to get in touch. What would you like to know?`;
     }
   }
 
@@ -86,7 +129,10 @@ const ChatWidget = ({ closeChat }) => {
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
             <div className="message-avatar">{message.role === "ai" ? <Bot size={16} /> : <User size={16} />}</div>
-            <div className="message-content">{message.content}</div>
+            <div className="message-content">
+              <Markdown>{message.content}</Markdown>
+            </div>
+
           </div>
         ))}
         {isLoading && (

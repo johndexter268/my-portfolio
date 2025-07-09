@@ -636,7 +636,7 @@ const handleSubmit = (e) => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2024 John Dexter Lanot. All rights reserved.</p>
+            <p>&copy; 2025 John Dexter Lanot. All rights reserved.</p>
           </div>
         </div>
       </footer>
