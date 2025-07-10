@@ -82,7 +82,7 @@ const ChatWidget = ({ closeChat }) => {
 - **Dental Ease App & Dentist Web System**: A cross-platform appointment system using Flutter and Firebase.
 - **OJT Tracking System**: Tracks trainee progress and attendance.
 - **Lumiere Clothing Shop**: An e-commerce platform with admin tools.
-- **Crypto Dashboard & Portfolio Website**: Built with React and CSS to showcase projects and personal branding.`;
+- **Portfolio Website**: Built with React and CSS to showcase projects and personal branding.`;
     } else if (
       lowerMessage.includes("contact") ||
       lowerMessage.includes("hire") ||

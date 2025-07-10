@@ -399,7 +399,7 @@ const handleSubmit = (e) => {
             {/* Project Card 8 */}
             <div className="project-card">
               <div className="project-image">
-                <img src="/projects/portfolio.png?height=200&width=350" alt="Crypto Dashboard" />
+                <img src="/projects/portfolio.png?height=200&width=350" alt="projects" />
               </div>
               <div className="project-content">
                 <h3 className="project-title">Personal Portfolio</h3>
@@ -532,10 +532,10 @@ const handleSubmit = (e) => {
               </div>
 
               <div className="social-links">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
+                <a href="https://github.com/johndexter268/" target="_blank" rel="noopener noreferrer" className="social-link">
                   <Github size={24} />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
+                <a href="https://linkedin.com/in/john-dexter-lanot/" target="_blank" rel="noopener noreferrer" className="social-link">
                   <Linkedin size={24} />
                 </a>
               </div>
