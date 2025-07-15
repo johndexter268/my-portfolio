@@ -342,7 +342,7 @@ const handleSubmit = (e) => {
             </div>
 
             {/* Project Card 5 */}
-            <div className="project-card">
+            {/* <div className="project-card">
               <div className="project-image">
                 <img src="/projects/DE-App.png?height=200&width=350" alt="projects" />
               </div>
@@ -357,10 +357,10 @@ const handleSubmit = (e) => {
                   <span className="tech-badge">Firebase</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Project Card 6 */}
-            <div className="project-card">
+            {/* <div className="project-card">
               <div className="project-image">
                 <img src="/projects/DE-Dentist.png?height=200&width=350" alt="projects" />
               </div>
@@ -375,7 +375,7 @@ const handleSubmit = (e) => {
                   <span className="tech-badge">Firebase</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Project Card 7 */}
             <div className="project-card">
