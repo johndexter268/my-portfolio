@@ -116,7 +116,7 @@ const ChatWidget = ({ closeChat }) => {
         <div className="chat-header-info">
           <Bot size={20} />
           <div>
-            <h3>Dex's AI Assistant</h3>
+            <h3>Ask here!</h3>
             <p>Ask me about Dex's work!</p>
           </div>
         </div>

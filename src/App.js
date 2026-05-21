@@ -263,9 +263,48 @@ const handleSubmit = (e) => {
 
       {/* Projects Section */}
       <section className="projects" id="projects">
+        
         <div className="container">
           <h2 className="section-title">My Projects</h2>
           <div className="projects-grid">
+             
+              <div className="project-card">
+              <div className="project-image">
+                <img src="/projects/haliguesil.png?height=200&width=350" alt="projects" />
+              </div>
+              <div className="project-content">
+                <h3 className="project-title">Brgy Health Center Appointment System with SMS</h3>
+                <p className="project-description">
+                  An appointment management system to manage Health Center's appointments, inventory, and announcements.
+                  Users are residents, BHW and Health Practitioners.
+                </p>
+                <div className="tech-stack">
+                  <span className="tech-badge">HTMl</span>
+                  <span className="tech-badge">CSS</span>
+                  <span className="tech-badge">PHP</span>
+                  <span className="tech-badge">MySQL</span>
+                </div>
+              </div>
+            </div>
+
+             <div className="project-card">
+              <div className="project-image">
+                <img src="/projects/brgytingalabak.png?height=200&width=350" alt="projects" />
+              </div>
+              <div className="project-content">
+                <h3 className="project-title">Brgy Management System with SMS</h3>
+                <p className="project-description">
+                  An information management system to manage barangay's resident information, project and document request of the residents.
+                </p>
+                <div className="tech-stack">
+                  <span className="tech-badge">HTMl</span>
+                  <span className="tech-badge">CSS</span>
+                  <span className="tech-badge">PHP</span>
+                  <span className="tech-badge">MySQL</span>
+                </div>
+              </div>
+            </div>
+
             {/* Project Card 1 */}
             <div className="project-card">
               <div className="project-image">
@@ -342,7 +381,7 @@ const handleSubmit = (e) => {
             </div>
 
             {/* Project Card 5 */}
-            {/* <div className="project-card">
+            <div className="project-card">
               <div className="project-image">
                 <img src="/projects/DE-App.png?height=200&width=350" alt="projects" />
               </div>
@@ -357,10 +396,10 @@ const handleSubmit = (e) => {
                   <span className="tech-badge">Firebase</span>
                 </div>
               </div>
-            </div> */}
+            </div>
 
             {/* Project Card 6 */}
-            {/* <div className="project-card">
+            <div className="project-card">
               <div className="project-image">
                 <img src="/projects/DE-Dentist.png?height=200&width=350" alt="projects" />
               </div>
@@ -375,10 +414,10 @@ const handleSubmit = (e) => {
                   <span className="tech-badge">Firebase</span>
                 </div>
               </div>
-            </div> */}
+            </div>
 
             {/* Project Card 7 */}
-            <div className="project-card">
+            {/* <div className="project-card">
               <div className="project-image">
                 <img src="/projects/lumiere.png?height=200&width=350" alt="projects" />
               </div>
@@ -389,12 +428,12 @@ const handleSubmit = (e) => {
                 </p>
                 <div className="tech-stack">
                   <span className="tech-badge">HTMl</span>
-                  <span className="tech-badge">CSSS</span>
+                  <span className="tech-badge">CSS</span>
                   <span className="tech-badge">PHP</span>
                   <span className="tech-badge">MySQL</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Project Card 8 */}
             <div className="project-card">
@@ -479,8 +518,7 @@ const handleSubmit = (e) => {
                 websites and applications using cutting-edge technologies.
               </p>
               <p>
-                When I'm not coding, you can find me exploring new design trends, contributing to open-source projects,
-                or sharing my knowledge with the developer community. I'm always eager to take on new challenges and
+                I'm always eager to take on new challenges and
                 collaborate on exciting projects.
               </p>
 
